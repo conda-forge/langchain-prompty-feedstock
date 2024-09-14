@@ -1,5 +1,5 @@
 {% set name = "langchain-prompty" %}
-{% set version = "0.0.3" %}
+{% set version = "0.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/langchain_prompty-{{ version }}.tar.gz
-  sha256: fabcda0097d1408ddc46579f35f02a02251f8393db3191d343bf66cbc5d09367
+  sha256: a278a03fa85e4d6f8edc51dd2c3d88793a502f24911e75fad231dd95af332442
 
 build:
   noarch: python
