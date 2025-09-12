@@ -1,5 +1,5 @@
 {% set name = "langchain-prompty" %}
-{% set version = "0.1.1" %}
+{% set version = "0.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,17 +7,17 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/langchain_prompty-{{ version }}.tar.gz
-  sha256: c721052bb32c61ca747d7e63bb77a9c9ab9f5a8c429b7286bc12d088abe9a039
+  sha256: 91d012f29425c118df38d4e8af63adf167524471e5d263ba33e1253673da059f
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
     - python {{ python_min }}
-    - poetry-core >=1.0.0
+    - pdm-backend
     - pip
   run:
     - python >={{ python_min }},<4.0
