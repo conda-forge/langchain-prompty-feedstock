@@ -1,0 +1,46 @@
+schema_version: 1
+
+context:
+  name: langchain-prompty
+  version: "1.0.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/langchain_prompty-${{ version }}.tar.gz
+  sha256: 439c50ae99305d593ecdd2971902cf665f5a1d59a20fc5053c7c75f368096cba
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - hatchling
+    - pip
+  run:
+    - python >=${{ python_min }},<4.0
+    - langchain-core <2.0.0,>=1.0.0
+    - pyyaml >=6.0.1,<7.0.0
+    - types-pyyaml >=6.0.12,<7.0.0
+
+tests:
+  - python:
+      imports:
+        - langchain_prompty
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: An integration package connecting Prompty and LangChain
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/langchain-ai/langchain
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
